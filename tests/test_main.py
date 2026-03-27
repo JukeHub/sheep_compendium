@@ -31,7 +31,8 @@ def test_add_sheep():
     new_sheep = {
         "id": 44,
         "name": "Hamilton",
-        "breed": "F1"
+        "breed": "F1",
+        "sex": "ewe"
     }
 
     # TODO: Send a POST request to the endpoint "/sheep" with the new sheep data.
@@ -47,7 +48,8 @@ def test_add_sheep():
     assert response.json() == {
         "id": 44,
         "name": "Hamilton",
-        "breed": "F1"
+        "breed": "F1",
+        "sex": "ewe"
     }
 
     # TODO: Verify that the sheep was actually added to the database by retrieving the new sheep by ID.
