@@ -16,5 +16,9 @@ def test_read_sheep():
     assert response.status_code == 200
 
     assert response.json() == {
-
+        # Expected JSON structure
+        "id": 1,
+        "name": "Spice",
+        "breed": "Gotland",
+        "sex": "ewe"
     }
