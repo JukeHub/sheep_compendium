@@ -53,6 +53,6 @@ def test_add_sheep():
     # TODO: Verify that the sheep was actually added to the database by retrieving the new sheep by ID.
     #   include an assert statement to see if the new sheep data can be retrieved.
 
-    get_response_by_id = client.get("/sheep/44")
-    assert get_response_by_id.status_code == 200
-    assert get_response_by_id.json() == new_sheep
+    response_by_id = client.get("/sheep/44")
+    assert response_by_id.status_code == 200
+    assert response_by_id.json() == new_sheep
