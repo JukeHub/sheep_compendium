@@ -6,7 +6,15 @@ class FakeDB:
         self.data: Dict[int, Sheep] = {}
 
     def get_sheep(self, id: int) -> Sheep:
-        return self.data.get(id);
+        return self.data.get(id)
+
+    def add_sheep(self, sheep: Sheep) -> Sheep:
+        # Check if the sheep ID already exists
+        if sheep.id in self.data:
+            raise ValueError("Sheep witht his ID already exists")
+        # Add the new sheep to the database
+        self.data[sheep.id] = sheep
+        return sheep
 
 db = FakeDB()
 db.data = {
