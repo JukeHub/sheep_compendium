@@ -83,3 +83,19 @@ def test_delete_sheep():
 
     assert response.status_code == 204
     assert response2.status_code == 404
+
+def test_update_sheep():
+    #create a sheep to update an existing sheep
+    updated_spice = {
+        "id": 1,
+        "name": "Mega Ultra Spicy Spice",
+        "breed": "Gotland",
+        "sex": "ewe"
+    }
+
+    response = client.put("/sheep/1", json=updated_spice)
+
+    assert response.status_code == 200
+    assert response.json()["name"] == "Mega Ultra Spicy Spice"
+
+
