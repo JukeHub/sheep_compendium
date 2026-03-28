@@ -16,8 +16,13 @@ class FakeDB:
         self.data[sheep.id] = sheep
         return sheep
 
-    def read_all(self):
+    def read_all(self) -> list[Sheep]:
         return list(self.data.values())
+
+    def delete_sheep(self, id: int) -> Sheep | None:
+        if id in self.data:
+          return self.data.pop(id)
+        return None
 
 db = FakeDB()
 db.data = {

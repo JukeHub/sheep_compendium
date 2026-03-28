@@ -65,3 +65,21 @@ def test_get_all_sheep():
     data = response.json()
     assert data[0]["name"] == "Spice"
     assert data[5]["name"] == "Esther"
+
+def test_delete_sheep():
+
+    new_sheep = {
+        "id": 44,
+        "name": "Hamilton",
+        "breed": "F1",
+        "sex": "ewe"
+    }
+
+    client.post("/sheep/", json=new_sheep)
+
+    # Deleting a sheep that's there (response) and one that's not there (response2)
+    response = client.delete("/sheep/44")
+    response2 = client.delete("/sheep/999")
+
+    assert response.status_code == 204
+    assert response2.status_code == 404

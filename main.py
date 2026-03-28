@@ -20,3 +20,9 @@ def add_sheep(sheep: Sheep):
 def get_all_sheep():
     return db.read_all()
 
+@app.delete("/sheep/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_sheep(id: int):
+    deleted_sheep = db.delete_sheep(id)
+    if not deleted_sheep:
+        raise HTTPException(status_code=404, detail="Sheep not found")
+    return None
