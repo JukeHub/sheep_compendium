@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, status
 from models.db import db
 from models.models import Sheep
+from typing import List
 app = FastAPI()
 
 @app.get("/sheep/{id}", response_model=Sheep)
@@ -14,3 +15,8 @@ def add_sheep(sheep: Sheep):
 
     db.data[sheep.id] = sheep
     return sheep
+
+@app.get("/sheep/", response_model=List[Sheep])
+def get_all_sheep():
+    return db.read_all()
+

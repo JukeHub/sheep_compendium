@@ -58,3 +58,10 @@ def test_add_sheep():
     response_by_id = client.get("/sheep/44")
     assert response_by_id.status_code == 200
     assert response_by_id.json() == new_sheep
+
+def test_get_all_sheep():
+    response = client.get("/sheep/")
+    assert response.status_code == 200
+    data = response.json()
+    assert data[0]["name"] == "Spice"
+    assert data[5]["name"] == "Esther"

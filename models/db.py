@@ -16,6 +16,9 @@ class FakeDB:
         self.data[sheep.id] = sheep
         return sheep
 
+    def read_all(self):
+        return list(self.data.values())
+
 db = FakeDB()
 db.data = {
     1: Sheep(id=1, name="Spice", breed="Gotland", sex="ewe"),
